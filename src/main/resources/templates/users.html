@@ -13,18 +13,18 @@
             <th>Name</th>
             <th>Actions</th>
         </tr>
-        <!-- Цикл по списку пользователей -->
+
         <tr th:each="user : ${users}">
             <td th:text="${user.id}">Id</td>
             <td th:text="${user.name}">Name</td>
             <td>
-                <!-- Форма для редактирования пользователя -->
+
                 <form action="#" th:action="@{/edit-user}" method="post">
                     <input type="hidden" name="id" th:value="${user.id}"/>
                     <input type="text" name="name" th:value="${user.name}"/>
                     <button type="submit">Edit</button>
                 </form>
-                <!-- Форма для удаления пользователя -->
+
                 <form action="#" th:action="@{/delete-user}" method="post">
                     <input type="hidden" name="id" th:value="${user.id}"/>
                     <button type="submit">Delete</button>
@@ -34,7 +34,6 @@
     </table>
 </div>
 <br/>
-<!-- Заголовок формы для добавления нового пользователя -->
 <h2>Add New User</h2>
 <form action="#" th:action="@{/add-user}" th:object="${user}" method="post">
     <label for="name">Name:</label><br/>
@@ -42,7 +41,7 @@
     <button type="submit">Submit</button>
 </form>
 
-<!-- Отображение сообщения об ошибке, если оно существует -->
+
 <div th:if="${errorMessage}">
     <span th:text="${errorMessage}" style="color: red"></span>
 </div>
