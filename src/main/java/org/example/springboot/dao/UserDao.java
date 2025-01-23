@@ -1,4 +1,4 @@
-package org.example.springboot.DAO;
+package org.example.springboot.dao;
 
 import org.example.springboot.entity.User;
 

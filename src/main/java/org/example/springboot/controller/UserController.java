@@ -56,7 +56,7 @@ public class UserController {
             model.addAttribute("errorMessage",
                     "Ошибка: Объект пользователя не может быть пустым.");
             model.addAttribute("users", userService.findAll());
-            return "users"; 
+            return "users";
         }
         userService.saveOrUpdate(user);
         return "redirect:/";
