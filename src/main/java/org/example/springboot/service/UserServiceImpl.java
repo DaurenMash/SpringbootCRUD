@@ -5,6 +5,7 @@ import org.example.springboot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
+
 import java.util.List;
 
 @Service
@@ -29,13 +30,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void saveOrUpdate(User user) {
-        userDao.saveOrUpdate(user);
+    public void delete(Long id) {
+        userDao.delete(id);
     }
 
     @Override
     @Transactional
-    public void delete(Long id) {
-        userDao.delete(id);
+    public void edit(User user) {
+        userDao.edit(user);
     }
+
+    @Override
+    @Transactional
+    public void add(User user) {
+        userDao.add(user);
+    }
+
+
 }

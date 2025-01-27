@@ -5,6 +5,18 @@
     <title>Users</title>
 </head>
 <body>
+<h2>Add New User</h2>
+<form action="#" th:action="@{/add-user}" th:object="${user}" method="post">
+    <label for="name">Name:</label><br/>
+    <input type="text" id="name" name="name"><br/><br/>
+    <button type="submit">Submit</button>
+</form>
+<br>
+
+<div th:if="${errorMessage}">
+    <span th:text="${errorMessage}" style="color: red"></span>
+</div>
+
 <h1>List of Users</h1>
 <div>
     <table border="3">
@@ -33,18 +45,8 @@
         </tr>
     </table>
 </div>
-<br/>
-<h2>Add New User</h2>
-<form action="#" th:action="@{/add-user}" th:object="${user}" method="post">
-    <label for="name">Name:</label><br/>
-    <input type="text" id="name" name="name"><br/><br/>
-    <button type="submit">Submit</button>
-</form>
 
 
-<div th:if="${errorMessage}">
-    <span th:text="${errorMessage}" style="color: red"></span>
-</div>
 
 </body>
 </html>

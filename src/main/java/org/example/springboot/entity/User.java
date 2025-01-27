@@ -1,13 +1,15 @@
 package org.example.springboot.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "users")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -17,15 +19,5 @@ public class User {
 
     @Column(name = "name", columnDefinition = "VARCHAR(45)")
     private String Name;
-
-    public User() {}
-
-    public User(String name) {}
-
-
-
-
-
-
 
 }

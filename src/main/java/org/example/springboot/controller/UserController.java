@@ -1,9 +1,8 @@
 package org.example.springboot.controller;
 
+
 import org.example.springboot.entity.User;
 import org.example.springboot.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
     private final UserService userService;
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public UserController(UserService userService) {
@@ -31,26 +29,20 @@ public class UserController {
     }
 
     @PostMapping("/edit-user")
-    public String editUser(@RequestParam("id") Long id,
-                           @RequestParam("name") String name) {
-        User userToEdit = userService.findById(id);
-        if (userToEdit != null) {
-            userToEdit.setName(name);
-            userService.saveOrUpdate(userToEdit);
-        }
+    public String editUser(User user) {
+        userService.edit(user);
         return "redirect:/";
     }
 
     @PostMapping("/add-user")
     public String addUser(@ModelAttribute("user") User user, Model model) {
-        if (user.getName() == null || user.getName().isEmpty()) {
-            logger.error("Попытка передать пустой объект пользователя");
+        if (user.getName().isEmpty()) {
             model.addAttribute("errorMessage",
                     "Ошибка: Объект пользователя не может быть пустым.");
             model.addAttribute("users", userService.findAll());
             return "users";
         }
-        userService.saveOrUpdate(user);
+        userService.add(user);
         return "redirect:/";
     }
 
